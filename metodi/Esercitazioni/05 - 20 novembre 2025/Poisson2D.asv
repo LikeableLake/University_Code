@@ -1,0 +1,224 @@
+
+
+% Esercitazione di 'Metodi Numerici in Ingegneria Aerospaziale'
+% 15 novembre 2024
+% Prof. G. Coppola
+% 
+% Codice di esempio che risolve la equazione di Poisson 2D con varie
+% condizioni al contorno e in geometrie diverse.
+% Il codice e' strutturato in forma di function e accetta in ingresso nella 
+% variabile 'Esempio' un numero intero relativo ad un diverso esempio 
+% secondo lo schema:
+% 1) Eq.ne di Poisson in un quadrato con condizioni al contorno alla
+%    Dirichlet omogenee.
+% 2) Eq.ne di Poisson in un quadrato con condizioni al contorno alla
+%    Neumann-Dirichlet omogenee.
+% 3) Eq.ne di Poisson in un dominio a cardioide con BCs alla Dirichlet 
+%    omogenee.
+% 4) Eq.ne di Laplace in un quadrato con condizioni al contorno alla
+%    Dirichlet non omogenee su un lato. 
+% 5) Eq.ne di Laplace in un quadrato con condizioni al contorno alla
+%    Dirichlet non omogenee su due lati. 
+% 6) Eq.ne di Laplace in un dominio a L con condizioni al contorno alla
+%    Dirichlet-Neumann.
+% 
+% N e' il numero di punti della discretizzazione del quadrato 'base'.
+% 
+% Il codice utilizza i comandi predefiniti 'numgrid' e 'delsq' del Matlab.
+% NB si ricordi che il comando delsq discretizza l'operatore -nabla^2.
+close all; clc;
+Esempio=3; N=30;
+% Definizioni preliminari comuni a tutti i casi.
+x = linspace(0,1,N);   y = x;     % Definiziane del mesh.
+h = x(2) - x(1);       hq = h*h;  % Passo spaziale (uniforme).
+
+switch Esempio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+  case 1
+% 1) Eq.ne di Poisson in un quadrato con condizioni al contorno alla
+%    Dirichlet omogenee.
+    G = numgrid('S',N);       % Generazione della griglia in un quadrato.
+    L = -delsq(G)/hq;         % Laplaciano con BCs alla Dirichlet omogenee.
+    q = -ones((N-2)^2,1);     % Termine noto uniforme e pari a -1.
+% N.B. Ora sappiamo che le incognite sono N-2 x N-2 perche' i nodi 1 e N
+% sono di bordo per ciascun lato del quadrato.
+    f = L\q;                  % Risoluzione
+    F = reshape(f,N-2,N-2);   % Ritrasformiamo in una matrice le incognite.
+% Orliamo con le condizioni al contorno
+    F = [zeros(1,N-2); F; zeros(1,N-2)];
+    F = [zeros(1,N)',  F, zeros(1,N)' ];
+% Alternativamente la operazione di riversare le incognite dal vettore x
+% alla matrice X puo' essere codificata come:
+% X = G;      X(G>0) = x;
+% G>0 fornisce un array 'logico' con '1' al posto dei nodi interni
+% X(G>0) = x; sostituisce ai valori di X corrispondenti ai nodi
+% interni (G>0) i valori di x procedendo per colonne.
+% Grafica
+    figure; surf(x,y,F); shading interp; hold on; axis square;
+    contour3(x,y,F,linspace(0,max(f),20),'k'); 
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Poisson nel quadrato. BCs Dirichlet omogenee')
+    figure; contour(x,y,F,'k'); axis square
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Poisson nel quadrato. BCs Dirichlet omogenee')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  case 2
+% 2) Eq.ne di Poisson in un quadrato con condizioni al contorno alla
+%    Neumann-Dirichlet omogenee.
+    G = numgrid('S',N);       % Generazione della griglia in un quadrato.
+    L = -delsq(G);            % Laplaciano con BCs alla Dirichlet omogenee.
+    q = -ones((N-2)^2,1);     % Termine noto uniforme e pari a -1.
+% Assegnamo sul lato verticale di sinistra la condizione al contorno alla 
+% Neumann. Tale lato sappiamo gia' avere indici che vanno da 1 a N-2
+    for i = 1:N-2
+        L(i,i) = -3;
+    end
+    L = L/hq;
+    f = L\q;                  % Risoluzione
+    F = reshape(f,N-2,N-2);   % Ritrasformiamo in una matrice le incognite.
+% Orliamo con le condizioni al contorno
+    F = [F(:,1), F, zeros(1,N-2)'];
+    F = [zeros(1,N); F; zeros(1,N)];
+    figure; surf(x,y,F); shading interp; hold on; axis square;
+    contour3(x,y,F,linspace(0,max(f),20),'k'); 
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Poisson nel quadrato. BCs Dirichlet-Neumann')
+    figure; contour(x,y,F,'k'); axis square
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Poisson nel quadrato. BCs Dirichlet-Neumann')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  case 3
+% 3) Eq.ne di Poisson in un dominio a cardioide con BCs alla Dirichlet 
+%    omogenee.
+    G = numgrid('H',N);       % Generazione della griglia in un quadrato.
+    L = -delsq(G)/hq;         % Laplaciano con BCs alla Dirichlet omogenee.
+    N = length(find(G));      % Calcoliamo il numero di incognite.
+    q = -ones(N,1);           % Termine noto uniforme e pari a -1.
+    f = L\q;                  % Risoluzione.
+    F = G;   F(G>0) = f;      % Ritrasformiamo in una matrice le incognite.     
+    figure; surf(x,y,F); shading interp; hold on; axis square;
+    contour3(x,y,F,linspace(0,max(f),20),'k'); 
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Poisson in una cardioide. BCs Dirichlet omogenee')
+    figure; contour(x,y,F,'k'); axis square
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Poisson in una cardioide. BCs Dirichlet omogenee')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  case 4
+% 4) Eq.ne di Laplace in un quadrato con condizioni al contorno alla
+%    Dirichlet non omogenee su un lato. 
+    G = numgrid('S',N);       % Generazione della griglia in un quadrato.
+    L = -delsq(G)/hq;         % Laplaciano con BCs alla Dirichlet omogenee.
+    q = zeros((N-2)^2,1);     % Termine noto uniforme e pari a 0.
+% Aggiungiamo a q il valore non omogeneo delle BCs alla Dirichlet sul lato 
+% verticale a sinistra (indici da 1 a N-2)    
+    PhiB = 1;
+    q(1:N-2) = q(1:N-2) - PhiB/h^2;  
+% Risoluzione
+    f = L\q;                  % Risoluzione.
+    F = G;   F(G>0) = f;      % Ritrasformiamo in una matrice le incognite.     
+    F(:,1) = PhiB;            % Assegnazione della BC non omogenea.
+    figure; surf(x,y,F); shading interp; hold on; axis square;
+    contour3(x,y,F,linspace(0,max(f),20),'k'); 
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Laplace in un quadrato. BCs Dirichlet non omogenee')
+    figure; contour(x,y,F,'k'); axis square
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Laplace in un quadrato. BCs Dirichlet non omogenee')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  case 5
+% 5) Eq.ne di Laplace in un quadrato con condizioni al contorno alla
+%    Dirichlet non omogenee su due lati. 
+    G = numgrid('S',N);       % Generazione della griglia in un quadrato.
+    L = -delsq(G)/hq;         % Laplaciano con BCs alla Dirichlet omogenee.
+    q = zeros((N-2)^2,1);     % Termine noto uniforme e pari a 0.
+% Aggiungiamo a q il valore non omogeneo delle BCs alla Dirichlet sul lato 
+% verticale a sinistra (indici da 1 a N-2)    
+    PhiB = 1;                 % Valore non omogeneo della BC sul bordo.
+    q(1:N-2) = q(1:N-2) - PhiB/hq;  
+% Aggiungiamo a q il valore non omogeneo delle BCs alla Dirichlet sul lato 
+% in basso. Gli indici vengono determinati con un ciclo for.
+    [m,n] = size(G);
+    for i = 1:m-1
+        for j = 1:n
+% Il lato 'in basso' e' determinato dalla condizione che G(i,j) e' diverso
+% da zero (e' nodo interno e ad esso e' quindi associato un indice > 0)
+% mentre G(i+1,j) e' uguale a zero (e' nodo di bordo).
+            if (G(i,j)~=0)&&(G(i+1,j)==0)
+                q(G(i,j)) =  q(G(i,j)) - PhiB/hq;
+            end
+        end
+    end
+% Risoluzione
+    f = L\q;                  % Risoluzione.
+    F = G;   F(G>0) = f;      % Ritrasformiamo in una matrice le incognite. 
+% Assegnazione della BC non omogenea.    
+    F(:,1) = PhiB;            % Lato a sinistra
+    for i = 1:m-1;for j = 1:n % Lato in basso
+       if (G(i,j)~=0)&&(G(i+1,j)==0)
+            F(i+1,j) = PhiB;
+       end
+    end;          end
+    figure; surf(x,y,F); shading interp; hold on; axis square;
+    contour3(x,y,F,linspace(0,max(f),20),'k'); 
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Laplace in un quadrato. BCs Dirichlet non omogenee')
+    figure; contour(x,y,F,'k'); axis square
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Laplace in un quadrato. BCs Dirichlet non omogenee')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  case 6
+% 6) Eq.ne di Laplace in un dominio a L con condizioni al contorno alla
+%    Dirichlet-Neumann.
+    G = numgrid('L',N);       % Generazione della griglia in un quadrato.
+    L = -delsq(G)/hq;         % Laplaciano con BCs alla Dirichlet omogenee.
+    N = length(find(G));      % Calcoliamo il numero di incognite.
+    q = zeros(N,1);           % Termine noto uniforme e pari a 0.
+    PhiB = 1;                 % Valore non omogeneo della BC sul bordo.
+    [m,n] = size(G);
+    F = nan(m,n);    
+    for j = 1:n
+        for i = 1:m-1
+% Assegnazione Phi = PhiB sui lati 'a scalino'. Orliamo qui anche gia' il
+% valore della BC non omogenea nell'array della soluzione X.
+            if ((G(i,j)~=0)&&(G(i+1,j)==0))
+                q(G(i,j)) = q(G(i,j)) - PhiB/hq;
+                F(i+1,j) = PhiB;
+            end
+            if (j>2) && ((G(i,j)~=0)&&(G(i,j-1)==0))
+                q(G(i,j)) = q(G(i,j)) - PhiB/hq;
+                F(i,j-1) = PhiB;
+            end
+% Assegnazione Phi' = 0 sui lati verticali a destra e sinistra
+            if ((j<3) && ((G(i,j)~=0)&&(G(i,j-1)==0))) ||...
+               (j>2) && ((G(i,j)~=0)&&(G(i,j+1)==0))
+                k = G(i,j);
+                L(k,k) = -3/hq;
+            end
+        end
+    end
+    % Risoluzione
+    f = L\q;
+    F(G>0) = f;
+% Orlatura delle BCs alla Neumann per la matrice X della soluzione.
+    F(1:m,1) = F(1:m,2);
+    F(1:m,n) = F(1:m,n-1);        
+% Orlatura delle BCs alla Dirichlet omogenea per la matrice X della 
+% soluzione.
+    F(1,1:n) = 0;
+% Orlatura del nodo d'angolo per BC alla Dirichlet non omogenee.
+    i = m;
+    for j = 1:n-1
+    if isnan(F(i,j)) && ~isnan(F(i,j+1))
+        F(i,j) = PhiB;
+    end
+    end
+% Grafica.
+    figure; surf(x,y,F); shading interp; hold on; 
+    contour3(x,y,F,linspace(0,1,20),'k'); 
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Laplace in un dominio a L. BCs Dirichlet-Neumann')
+    figure; contour(x,y,F,linspace(0,1,20),'k'); axis square
+    xlabel('X'); ylabel('Y'); zlabel('\phi');
+    title('Equazione di Laplace in un dominio a L. BCs Dirichlet-Neumann')
+end
