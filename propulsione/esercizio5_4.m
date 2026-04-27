@@ -30,7 +30,7 @@ etaTH=zeros(nT, nbeta);
 
 %%
 for j=1:nT
-for i=1:nbeta
+    for i=1:nbeta
     %% presa d'aria
     T02=Ta;
     P02=Ed*Pa;
@@ -79,7 +79,7 @@ for i=1:nbeta
         TSFC(j,i)=inf;
         etaTH(j,i)=0;
     end
-end
+    end
 end
 
 figure (1);
