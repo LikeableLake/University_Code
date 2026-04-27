@@ -23,6 +23,7 @@ k5=10;
 
 %% ricavo le matrici locali e globale
 
+Kglob=zeros(6);
 K1=zeros(6);
 K2=zeros(6);
 K3=zeros(6);
