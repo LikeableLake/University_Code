@@ -16,7 +16,7 @@ R=287;
 T4=[1200 1400 1600];
 nT=length(T4);
 
-nbeta=100;
+nbeta=50;
 
 beta=linspace(1,50,nbeta);
 betaT=beta.^((gamma-1)/gamma);

@@ -14,7 +14,7 @@ cp=1005;
 gamma=1.4;
 R=287;
 
-nbeta=100;
+nbeta=50;
 beta=linspace(1,50,nbeta);
 betaT=beta.^((gamma-1)/gamma);
 
