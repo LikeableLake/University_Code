@@ -44,7 +44,7 @@ for j=1:nT
     %% turbina
     T5reale=T4(j)-(T3reale-T02)/(1+f);
     T5ideale=T4(j)-(T4(j)-T5reale)/etaT;
-    P05=P04*((T5ideale/T4(j))^((gamma-1)/gamma));
+    P05=P04*((T5ideale/T4(j))^((gamma)/gamma-1));
     %% ugello
     pressratio=Pa/P05;
     if (pressratio<=0.5283)
@@ -58,7 +58,7 @@ for j=1:nT
     else 
         %l'ugello non è strozzato
         Pu=P05*pressratio;
-        Tu=T5reale*((pressratio)^(gamma/(gamma-1)));
+        Tu=T5reale*((pressratio)^((gamma-1)/(gamma)));
         RHOu=Pu/(R*Tu);
         Vu=sqrt(2*cp*T5reale*(1-(pressratio^((gamma-1)/gamma))));
         Mu=RHOu*Au*Vu;
@@ -77,7 +77,7 @@ for j=1:nT
         S(j,i)=0;
         I(j,i)=0;
         TSFC(j,i)=inf;
-        etaTH(j,i)=0;
+        etaTH(j,i)=NaN;
     end
     end
 end
