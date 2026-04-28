@@ -101,6 +101,19 @@ for k=1:nM
                 etaP(j,i,k)=NaN;
                 eta(j,i,k)=NaN;
             end
+
+            if(eta(j,i,k)<=0)
+                eta(j,i,k)=NaN;
+            end
+
+            if(etaP(j,i,k)<=0)
+                etaP(j,i,k)=NaN;
+            end
+
+            if(etaTH(j,i,k)<=0)
+                etaTH(j,i,k)=NaN;
+            end
+
         end
     end
 end
