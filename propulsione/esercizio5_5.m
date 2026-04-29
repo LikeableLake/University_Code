@@ -102,17 +102,17 @@ for k=1:nM
                 eta(j,i,k)=NaN;
             end
 
-            if(eta(j,i,k)<=0)
-                eta(j,i,k)=NaN;
-            end
-
-            if(etaP(j,i,k)<=0)
-                etaP(j,i,k)=NaN;
-            end
-
-            if(etaTH(j,i,k)<=0)
-                etaTH(j,i,k)=NaN;
-            end
+            % if(eta(j,i,k)<=0)
+            %     eta(j,i,k)=NaN;
+            % end
+            % 
+            % if(etaP(j,i,k)<=0)
+            %     etaP(j,i,k)=NaN;
+            % end
+            % 
+            % if(etaTH(j,i,k)<=0)
+            %     etaTH(j,i,k)=NaN;
+            % end
 
         end
     end
@@ -125,35 +125,35 @@ for p=1:nM
     plot(beta, I(1,:,p)); hold on;
     plot(beta, I(2,:,p)); hold on;
     plot(beta, I(3,:,p))
-    title('Spinta specifica')
+    title(['Spinta specifica (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     figure(o+1)
     plot(beta, TSFC(1,:,p)); hold on;
     plot(beta, TSFC(2,:,p)); hold on;
     plot(beta, TSFC(3,:,p))
-    title('TSFC')
+    title(['TSFC (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     figure(o+2)
     plot(beta, etaTH(1,:,p)); hold on;
     plot(beta, etaTH(2,:,p)); hold on;
     plot(beta, etaTH(3,:,p))
-    title('\eta_T_H')
+    title(['\eta_T_H (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     figure(o+3)
     plot(beta, etaP(1,:,p)); hold on;
     plot(beta, etaP(2,:,p)); hold on;
     plot(beta, etaP(3,:,p))
-    title('\eta_P')
+    title(['\eta_P (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     figure(o+4)
     plot(beta, eta(1,:,p)); hold on;
     plot(beta, eta(2,:,p)); hold on;
     plot(beta, eta(3,:,p))
-    title('\eta')
+    title(['\eta (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     o=o+5;
