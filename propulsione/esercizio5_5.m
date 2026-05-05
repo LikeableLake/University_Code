@@ -96,15 +96,17 @@ for k=1:nM
                 Ma=Mu/(1+f);
             end
             
-            if T5 <= T2 || P5 <= Pa || 0.9*Vu <= V(k)
-                funzionamentomotore = false;
+            if funzionamentomotore
+                if P5 <= Pa || Vu <= V(k) || f<=0
+                    funzionamentomotore = false;
 
-                S(j,i,k)=NaN;
-                I(j,i,k)=NaN;
-                TSFC(j,i,k)=NaN;
-                etaTH(j,i,k)=NaN;
-                etaP(j,i,k)=NaN;
-                eta(j,i,k)=NaN;
+                    S(j,i,k)=NaN;
+                    I(j,i,k)=NaN;
+                    TSFC(j,i,k)=NaN;
+                    etaTH(j,i,k)=NaN;
+                    etaP(j,i,k)=NaN;
+                    eta(j,i,k)=NaN;
+                end
             end
 
             %risultati finali
