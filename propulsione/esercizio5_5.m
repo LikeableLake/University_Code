@@ -64,6 +64,7 @@ for k=1:nM
             %ugello
             pressratio=Pa/P5;
             if (pressratio<=0.5283)
+                funzionamentomotore=logical(true);
                 %ugello strozzato
                 Pu=P5*0.5283;
                 Tu=T5*0.833;
@@ -71,7 +72,17 @@ for k=1:nM
                 Vu=sqrt(gamma*R*Tu);
                 Mu=RHOu*Au*Vu;
                 Ma=Mu/(1+f);
-            else 
+            elseif (pressratio>=1)
+                %il motore non funziona
+                funzionamentomotore=logical(false);
+                S(j,i,k)=0;
+                I(j,i,k)=0;
+                TSFC(j,i,k)=inf;
+                etaTH(j,i,k)=NaN;
+                etaP(j,i,k)=NaN;
+                eta(j,i,k)=NaN;
+            else
+                funzionamentomotore=logical(true);               
                 %l'ugello non è strozzato
                 Pu=P5*pressratio;
                 Tu=T5*((pressratio)^((gamma-1)/(gamma)));
@@ -83,37 +94,14 @@ for k=1:nM
             
             %risultati finali
             
-            S(j,i,k)=Ma*((1+f)*Vu-V(k))+(Pu-Pa)*Au;
-            I(j,i,k)=S(j,i,k)/Ma;
-            TSFC(j,i,k)=f*Ma/S(j,i,k);
-            etaTH(j,i,k)=(Vu^2-V(k)^2)/(2*f*Qf);
-            etaP(j,i,k)=2*((V(k)/Vu)/(1+(V(k)/Vu)));
-            eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
-
-            %controllo se ci sono risultati immaginari, in questo caso il motore
-            %non produce spinta infatti il rapporto di pressioni Pa/P05 è maggiore
-            %di 1
-            if(imag(Vu)~=0 || (real(S(j,i,k))<=0))
-                S(j,i,k)=0;
-                I(j,i,k)=0;
-                TSFC(j,i,k)=inf;
-                etaTH(j,i,k)=NaN;
-                etaP(j,i,k)=NaN;
-                eta(j,i,k)=NaN;
+            if(funzionamentomotore)
+                S(j,i,k)=Ma*((1+f)*Vu-V(k))+(Pu-Pa)*Au;
+                I(j,i,k)=S(j,i,k)/Ma;
+                TSFC(j,i,k)=f*Ma/S(j,i,k)*3600;
+                etaTH(j,i,k)=(S*V(k))/((1/2)*Ma*(1+f)*(Vu^2-V(k)^2));
+                etaP(j,i,k)=((1/2)*Ma*(1+f)*(Vu^2-V(k)^2))/(Ma*f*Qf);
+                eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
             end
-
-            % if(eta(j,i,k)<=0)
-            %     eta(j,i,k)=NaN;
-            % end
-            % 
-            % if(etaP(j,i,k)<=0)
-            %     etaP(j,i,k)=NaN;
-            % end
-            % 
-            % if(etaTH(j,i,k)<=0)
-            %     etaTH(j,i,k)=NaN;
-            % end
-
         end
     end
 end
