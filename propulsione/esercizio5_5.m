@@ -51,7 +51,8 @@ for k=1:nM
                 eD=1-0.075*(M(k)-1)^1.35;
             end
             T2=Ta*(1+((gamma-1)/2)*M(k)^2);
-            P2=eD*Pa;
+            P02 = Pa*(1 + ((gamma-1)/2)*M(k)^2)^(gamma/(gamma-1));
+            P2 = eD*P02;
             %compressore
             P3=beta(i)*P2;
             T3=T2*(1+(betaT(i)-1)/etaC);
@@ -59,12 +60,12 @@ for k=1:nM
             P4=P3;
             f=(cp*(T4(j)-T3))/(etaB*Qf);
             %turbina
-            T5=T4(j)-(T3-T2)/(1+f);
+            T5=T4(j)-(T3-T2)/(etaT*(1+f));
             T5ideale=T4(j)-(T4(j)-T5)/etaT;
-            P5=P4*((T5ideale/T4(j))^((gamma)/gamma-1));
+            P5=P4*((T5ideale/T4(j))^((gamma)/(gamma-1)));
             %ugello
             pressratio=Pa/P5;
-            if (pressratio<=0.5283)
+            if (pressratio<=(2/(gamma+1))^(gamma/(gamma-1)))
                 funzionamentomotore=logical(true);
                 %ugello strozzato
                 Pu=P5*0.5283;
@@ -76,9 +77,9 @@ for k=1:nM
             elseif (pressratio>=1)
                 %il motore non funziona
                 funzionamentomotore=logical(false);
-                S(j,i,k)=0;
-                I(j,i,k)=0;
-                TSFC(j,i,k)=inf;
+                S(j,i,k)=nan;
+                I(j,i,k)=nan;
+                TSFC(j,i,k)=nan;
                 etaTH(j,i,k)=NaN;
                 etaP(j,i,k)=NaN;
                 eta(j,i,k)=NaN;
@@ -95,6 +96,17 @@ for k=1:nM
                 Ma=Mu/(1+f);
             end
             
+            if T5 <= T2 || P5 <= Pa || 0.9*Vu <= V(k)
+                funzionamentomotore = false;
+
+                S(j,i,k)=NaN;
+                I(j,i,k)=NaN;
+                TSFC(j,i,k)=NaN;
+                etaTH(j,i,k)=NaN;
+                etaP(j,i,k)=NaN;
+                eta(j,i,k)=NaN;
+            end
+
             %risultati finali
             
             if(funzionamentomotore)
@@ -149,12 +161,12 @@ for p=1:nM
 
     figure(o+5)
     plot(beta, adattato(1,:,p),'+'); hold on;
-    plot(beta, adattato(2,:,p),'+'); hold on;
-    plot(beta, adattato(3,:,p),'+');
+    plot(beta, adattato(2,:,p),'o'); hold on;
+    plot(beta, adattato(3,:,p),'*');
     title(['l''ugello è adattato? (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
     ylim([-0.1 1.1]);
-    text(40, 0.5, ['0=NO';'1=SI'])
+    text(40, 0.5, sprintf('0 = NO\n1 = SI'))
 
     o=o+6;
 end
