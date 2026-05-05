@@ -38,6 +38,7 @@ I=zeros(nT, nbeta, nM);
 etaTH=zeros(nT, nbeta, nM);
 etaP=zeros(nT,nbeta, nM);
 eta=zeros(nT,nbeta, nM);
+adattato=logical(false(nT, nbeta, nM));
 
 %% ciclo
 for k=1:nM
@@ -84,6 +85,8 @@ for k=1:nM
             else
                 funzionamentomotore=logical(true);               
                 %l'ugello non è strozzato
+                adattato(j,i,k)=logical(true);
+
                 Pu=P5*pressratio;
                 Tu=T5*((pressratio)^((gamma-1)/(gamma)));
                 RHOu=Pu/(R*Tu);
@@ -98,8 +101,8 @@ for k=1:nM
                 S(j,i,k)=Ma*((1+f)*Vu-V(k))+(Pu-Pa)*Au;
                 I(j,i,k)=S(j,i,k)/Ma;
                 TSFC(j,i,k)=f*Ma/S(j,i,k)*3600;
-                etaTH(j,i,k)=(S*V(k))/((1/2)*Ma*(1+f)*(Vu^2-V(k)^2));
-                etaP(j,i,k)=((1/2)*Ma*(1+f)*(Vu^2-V(k)^2))/(Ma*f*Qf);
+                etaP(j,i,k)=(S(j,i,k)*V(k))/((1/2)*Ma*(1+f)*(Vu^2-V(k)^2));
+                etaTH(j,i,k)=((1/2)*Ma*(1+f)*(Vu^2-V(k)^2))/(Ma*f*Qf);
                 eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
             end
         end
@@ -144,5 +147,14 @@ for p=1:nM
     title(['\eta (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    o=o+5;
+    figure(o+5)
+    plot(beta, adattato(1,:,p),'+'); hold on;
+    plot(beta, adattato(2,:,p),'+'); hold on;
+    plot(beta, adattato(3,:,p),'+');
+    title(['l''ugello è adattato? (M=' num2str(M(p)) ')'])
+    legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
+    ylim([-0.1 1.1]);
+    text(40, 0.5, ['0=NO';'1=SI'])
+
+    o=o+6;
 end
