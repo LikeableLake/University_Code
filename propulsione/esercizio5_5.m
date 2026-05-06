@@ -115,8 +115,9 @@ for k=1:nM
                 S(j,i,k)=Ma*((1+f)*Vu-V(k))+(Pu-Pa)*Au;
                 I(j,i,k)=S(j,i,k)/Ma;
                 TSFC(j,i,k)=f*Ma/S(j,i,k)*3600;
-                etaP(j,i,k)=(S(j,i,k)*V(k))/((1/2)*Ma*(1+f)*(Vu^2-V(k)^2));
-                etaTH(j,i,k)=((1/2)*Ma*(1+f)*(Vu^2-V(k)^2))/(Ma*f*Qf);
+                Pj = 0.5*Ma*((1+f)*Vu^2 - V(k)^2)+ (Pu-Pa)*Au*Vu;
+                etaP(j,i,k)=(S(j,i,k)*V(k))/Pj;
+                etaTH(j,i,k)=Pj/(Ma*f*Qf);
                 eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
             end
         end
