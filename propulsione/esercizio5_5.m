@@ -127,42 +127,45 @@ end
     o=1;
 
 for p=1:nM
-    figure(o)
+
+    figure(p)
+
+    subplot(3, 2, o)
     plot(beta, I(1,:,p)); hold on;
     plot(beta, I(2,:,p)); hold on;
     plot(beta, I(3,:,p))
     title(['Spinta specifica (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    figure(o+1)
+    subplot(3, 2, o+1)
     plot(beta, TSFC(1,:,p)); hold on;
     plot(beta, TSFC(2,:,p)); hold on;
     plot(beta, TSFC(3,:,p))
     title(['TSFC (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    figure(o+2)
+    subplot(3, 2, o+2)
     plot(beta, etaTH(1,:,p)); hold on;
     plot(beta, etaTH(2,:,p)); hold on;
     plot(beta, etaTH(3,:,p))
     title(['\eta_T_H (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    figure(o+3)
+    subplot(3, 2, o+3)
     plot(beta, etaP(1,:,p)); hold on;
     plot(beta, etaP(2,:,p)); hold on;
     plot(beta, etaP(3,:,p))
     title(['\eta_P (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    figure(o+4)
+    subplot(3, 2, o+4)
     plot(beta, eta(1,:,p)); hold on;
     plot(beta, eta(2,:,p)); hold on;
     plot(beta, eta(3,:,p))
     title(['\eta (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    figure(o+5)
+    subplot(3, 2, o+5)
     plot(beta, adattato(1,:,p),'+'); hold on;
     plot(beta, adattato(2,:,p),'o'); hold on;
     plot(beta, adattato(3,:,p),'*');
@@ -171,5 +174,4 @@ for p=1:nM
     ylim([-0.1 1.1]);
     text(40, 0.5, sprintf('0 = NO\n1 = SI'))
 
-    o=o+6;
 end
