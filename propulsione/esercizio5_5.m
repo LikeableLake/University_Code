@@ -51,17 +51,18 @@ adattato=ones(nT, nbeta, nM);
 
 %% ciclo
 for k=1:nM
+    %presa d'aria
+    if M(k)<=1
+        eD=eDsubsonico;
+    else
+        eD=1-0.075*(M(k)-1)^1.35;
+    end
+    T2=Ta*(1+((gamma-1)/2)*M(k)^2);
+    P02 = Pa*(1 + ((gamma-1)/2)*M(k)^2)^(gamma/(gamma-1));
+    P2 = eD*P02;
+
     for j=1:nT
         for i=1:nbeta
-            %presa d'aria
-            if M(k)<=1
-                eD=eDsubsonico;
-            else
-                eD=1-0.075*(M(k)-1)^1.35;
-            end
-            T2=Ta*(1+((gamma-1)/2)*M(k)^2);
-            P02 = Pa*(1 + ((gamma-1)/2)*M(k)^2)^(gamma/(gamma-1));
-            P2 = eD*P02;
             %compressore
             P3=beta(i)*P2;
             T3=T2*(1+(betaT(i)-1)/etaC);
@@ -124,7 +125,7 @@ for k=1:nM
             end
             
             if ~funzionamentomotore
-                adattato(j,i,k)=nan;
+                adattato(j,i,k)=-1;
             end
 
             %risultati finali
@@ -155,52 +156,45 @@ for k=1:nM
     end
 end
 
+%% stampa a video dei risultati
+
 for p=1:nM
 
     figure(p)
 
     subplot(3, 2, 1)
-    plot(beta, I(1,:,p)); hold on;
-    plot(beta, I(2,:,p)); hold on;
-    plot(beta, I(3,:,p))
-    title(['Spinta specifica (M=' num2str(M(p)) ')'])
+    plot(beta, I(:,:,p)); hold on;
+    title(sprintf('Spinta specifica (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     subplot(3, 2, 2)
-    plot(beta, TSFC(1,:,p)); hold on;
-    plot(beta, TSFC(2,:,p)); hold on;
-    plot(beta, TSFC(3,:,p))
-    title(['TSFC (M=' num2str(M(p)) ')'])
+    plot(beta, TSFC(:,:,p)); hold on;
+    title(sprintf('TSFC (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     subplot(3, 2, 3)
-    plot(beta, etaTH(1,:,p)); hold on;
-    plot(beta, etaTH(2,:,p)); hold on;
-    plot(beta, etaTH(3,:,p))
-    title(['\eta_T_H (M=' num2str(M(p)) ')'])
+    plot(beta, etaTH(:,:,p)); hold on;
+    title(sprintf('\x03B7_T_H (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     subplot(3, 2, 4)
-    plot(beta, etaP(1,:,p)); hold on;
-    plot(beta, etaP(2,:,p)); hold on;
-    plot(beta, etaP(3,:,p))
-    title(['\eta_P (M=' num2str(M(p)) ')'])
+    plot(beta, etaP(:,:,p)); hold on;
+    title(sprintf('\x03B7_P (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     subplot(3, 2, 5)
-    plot(beta, eta(1,:,p)); hold on;
-    plot(beta, eta(2,:,p)); hold on;
-    plot(beta, eta(3,:,p))
-    title(['\eta (M=' num2str(M(p)) ')'])
+    plot(beta, eta(:,:,p)); hold on;
+    title(sprintf('\x03B7 (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
     subplot(3, 2, 6)
-    plot(beta, adattato(1,:,p)-0.01,'v'); hold on;
-    plot(beta, adattato(2,:,p)+0.01,'^'); hold on;
-    plot(beta, adattato(3,:,p),'square');
-    title(['l''ugello è adattato? (M=' num2str(M(p)) ')'])
-    legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
-    ylim([-0.1 1.1]);
-    text(40, 0.5, sprintf('0 = NO\n1 = SI'))
-
+    imagesc(beta, T4, adattato(:,:,p)); hold on;
+    colormap([[0 0 0];[186/255 32/255 11/255];[0 125/255 17/255]]);
+    clim([-1 1]);
+    set(colorbar, 'Ticks', [-0.65 0 0.65] ,'TickLabels', {sprintf('motore non funzionante'), 'NO', 'SI'} );
+    set(gca, 'Ydir', 'normal', 'YTick',[1200 1400 1600]);
+    ylabel('T4', 'Rotation',0);
+    plot(beta, repmat(1500, nbeta, 1), 'k'); hold on;
+    plot(beta, repmat(1300, nbeta, 1), 'k'); 
+    title(sprintf('l''ugello è adattato? (M=%.1f)', M(p)) );
 end
