@@ -1,6 +1,15 @@
 clc; close all; clear;
 
-%%
+%% svolgimento dell'esercizio 5.5
+% l'esercizio è stato svolto utilizzando i valori dell'atmosfera isa per il
+% calcolo di temperatura e pressione, la formula empirica per l'efficienza
+% della presa d'aria supersonica, e un triplo ciclo for innestato in modo
+% da ricavare le prestazioni in funzione delle tre variabili beta, T4, M0.
+
+% L'utilizzo di matrici tridimensionali è stato utile al fine di conservare
+% tutti i valori e di poter inserire in dei grafici le curve delle
+% prestazioni in funzione di beta e T4 per poi analizzare il funzionamento
+% in 4 mach diversi, uno per ogni figura che restituirà il codice.
 
 z=10000;
 eDsubsonico=0.98;
@@ -38,7 +47,7 @@ I=zeros(nT, nbeta, nM);
 etaTH=zeros(nT, nbeta, nM);
 etaP=zeros(nT,nbeta, nM);
 eta=zeros(nT,nbeta, nM);
-adattato=logical(false(nT, nbeta, nM));
+adattato=ones(nT, nbeta, nM);
 
 %% ciclo
 for k=1:nM
@@ -60,14 +69,16 @@ for k=1:nM
             P4=P3;
             f=(cp*(T4(j)-T3))/(etaB*Qf);
             %turbina
-            T5=T4(j)-(T3-T2)/(etaT*(1+f));
+            T5=T4(j)-(T3-T2)/(1+f);
             T5ideale=T4(j)-(T4(j)-T5)/etaT;
             P5=P4*((T5ideale/T4(j))^((gamma)/(gamma-1)));
             %ugello
             pressratio=Pa/P5;
             if (pressratio<=(2/(gamma+1))^(gamma/(gamma-1)))
-                funzionamentomotore=logical(true);
-                %ugello strozzato
+                %il motore funziona
+                funzionamentomotore=true;
+                %ugello strozzato non adattato
+                adattato(j,i,k)=0;
                 Pu=P5*0.5283;
                 Tu=T5*0.833;
                 RHOu=Pu/(R*Tu);
@@ -76,7 +87,7 @@ for k=1:nM
                 Ma=Mu/(1+f);
             elseif (pressratio>=1)
                 %il motore non funziona
-                funzionamentomotore=logical(false);
+                funzionamentomotore=false;
                 S(j,i,k)=nan;
                 I(j,i,k)=nan;
                 TSFC(j,i,k)=nan;
@@ -84,10 +95,10 @@ for k=1:nM
                 etaP(j,i,k)=NaN;
                 eta(j,i,k)=NaN;
             else
-                funzionamentomotore=logical(true);               
-                %l'ugello non è strozzato
-                adattato(j,i,k)=logical(true);
-
+                %il motore funziona
+                funzionamentomotore=true;               
+                %l'ugello non è strozzato quindi è adattato
+                adattato(j,i,k)=1;
                 Pu=P5*pressratio;
                 Tu=T5*((pressratio)^((gamma-1)/(gamma)));
                 RHOu=Pu/(R*Tu);
@@ -96,10 +107,13 @@ for k=1:nM
                 Ma=Mu/(1+f);
             end
             
-            if funzionamentomotore
-                if P5 <= Pa || Vu <= V(k) || f<=0
-                    funzionamentomotore = false;
+            % se il rapporto di pressioni ci sono comunque casi in cui il
+            % motore potrebbe non funzionare che matematicamente sono
+            % comunque accettabili quindi li escludo dal calcolo
 
+            if funzionamentomotore
+                if Vu <= V(k) || f<=0
+                    funzionamentomotore = false;
                     S(j,i,k)=NaN;
                     I(j,i,k)=NaN;
                     TSFC(j,i,k)=NaN;
@@ -108,14 +122,31 @@ for k=1:nM
                     eta(j,i,k)=NaN;
                 end
             end
+            
+            if ~funzionamentomotore
+                adattato(j,i,k)=nan;
+            end
 
             %risultati finali
+            %utilizzo le formule generali in modo che anche con ugelli non
+            %adattati i risultati siano coerenti
             
             if(funzionamentomotore)
+                
+                %calcolo la potenza del getto con la formula generale, con
+                %effetto della propulsione ed effetto della velocità
+
+                Pj = 0.5*Ma*((1+f)*Vu^2 - V(k)^2)+ (Pu-Pa)*Au*Vu;
+                
+                %faccio la stessa cosa per la spinta e poi trovo la spinta
+                %specifica e il TSFC
+
                 S(j,i,k)=Ma*((1+f)*Vu-V(k))+(Pu-Pa)*Au;
                 I(j,i,k)=S(j,i,k)/Ma;
                 TSFC(j,i,k)=f*Ma/S(j,i,k)*3600;
-                Pj = 0.5*Ma*((1+f)*Vu^2 - V(k)^2)+ (Pu-Pa)*Au*Vu;
+                
+                %calcolo dei rendimenti
+
                 etaP(j,i,k)=(S(j,i,k)*V(k))/Pj;
                 etaTH(j,i,k)=Pj/(Ma*f*Qf);
                 eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
@@ -124,51 +155,49 @@ for k=1:nM
     end
 end
 
-    o=1;
-
 for p=1:nM
 
     figure(p)
 
-    subplot(3, 2, o)
+    subplot(3, 2, 1)
     plot(beta, I(1,:,p)); hold on;
     plot(beta, I(2,:,p)); hold on;
     plot(beta, I(3,:,p))
     title(['Spinta specifica (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, o+1)
+    subplot(3, 2, 2)
     plot(beta, TSFC(1,:,p)); hold on;
     plot(beta, TSFC(2,:,p)); hold on;
     plot(beta, TSFC(3,:,p))
     title(['TSFC (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, o+2)
+    subplot(3, 2, 3)
     plot(beta, etaTH(1,:,p)); hold on;
     plot(beta, etaTH(2,:,p)); hold on;
     plot(beta, etaTH(3,:,p))
     title(['\eta_T_H (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, o+3)
+    subplot(3, 2, 4)
     plot(beta, etaP(1,:,p)); hold on;
     plot(beta, etaP(2,:,p)); hold on;
     plot(beta, etaP(3,:,p))
     title(['\eta_P (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, o+4)
+    subplot(3, 2, 5)
     plot(beta, eta(1,:,p)); hold on;
     plot(beta, eta(2,:,p)); hold on;
     plot(beta, eta(3,:,p))
     title(['\eta (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, o+5)
-    plot(beta, adattato(1,:,p),'+'); hold on;
-    plot(beta, adattato(2,:,p),'o'); hold on;
-    plot(beta, adattato(3,:,p),'*');
+    subplot(3, 2, 6)
+    plot(beta, adattato(1,:,p)-0.01,'v'); hold on;
+    plot(beta, adattato(2,:,p)+0.01,'^'); hold on;
+    plot(beta, adattato(3,:,p),'square');
     title(['l''ugello è adattato? (M=' num2str(M(p)) ')'])
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
     ylim([-0.1 1.1]);
