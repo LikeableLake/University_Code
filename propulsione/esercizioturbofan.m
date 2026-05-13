@@ -36,13 +36,17 @@ switch esercizio
 
 end
 
-%soluzione
+%presa d'aria
 
 T2=Ta*(1+((gamma-1)/2)*M^2);
 P02 = Pa*(1 + ((gamma-1)/2)*M^2)^(gamma/(gamma-1));
 P2 = eD*P02;
 
-% caso turbojet
+% motore turbofan
+
+
+
+% motore turbojet
 
 %compressore
 P3=betaCJ*P2;
