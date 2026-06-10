@@ -4,6 +4,6 @@ function [lambda, vett1, vett2] = auto(A)
 [V,D]=eig(A);
 
 lambda=[D(1,1); D(2,2)];
-vett1=V(1,:);
-vett2=V(2,:);
+vett1=V(:,1);
+vett2=V(:,2);
 
