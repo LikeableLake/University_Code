@@ -38,7 +38,7 @@ nM=length(M);
 Ta=288-0.0065*z;
 Pa=101330*((Ta/288)^(9.81/(R*0.0065)));
 a=sqrt(gamma*R*Ta);
-V=M.*a;
+V0=M.*a;
 
 %% inizializzazione matrici delle soluzioni
 S=zeros(nT, nbeta,nM);
@@ -58,8 +58,8 @@ for k=1:nM
         eD=1-0.075*(M(k)-1)^1.35;
     end
     T2=Ta*(1+((gamma-1)/2)*M(k)^2);
-    P02 = Pa*(1 + ((gamma-1)/2)*M(k)^2)^(gamma/(gamma-1));
-    P2 = eD*P02;
+    P0a = Pa*(1 + ((gamma-1)/2)*M(k)^2)^(gamma/(gamma-1));
+    P2 = eD*P0a;
 
     for j=1:nT
         for i=1:nbeta
@@ -75,9 +75,7 @@ for k=1:nM
             P5=P4*((T5ideale/T4(j))^((gamma)/(gamma-1)));
             %ugello
             pressratio=Pa/P5;
-            if (pressratio<=(2/(gamma+1))^(gamma/(gamma-1)))
-                %il motore funziona
-                funzionamentomotore=true;
+            if (pressratio<=0.5283)
                 %ugello strozzato non adattato
                 adattato(j,i,k)=0;
                 Pu=P5*0.5283;
@@ -86,18 +84,7 @@ for k=1:nM
                 Vu=sqrt(gamma*R*Tu);
                 Mu=RHOu*Au*Vu;
                 Ma=Mu/(1+f);
-            elseif (pressratio>=1)
-                %il motore non funziona
-                funzionamentomotore=false;
-                S(j,i,k)=nan;
-                I(j,i,k)=nan;
-                TSFC(j,i,k)=nan;
-                etaTH(j,i,k)=NaN;
-                etaP(j,i,k)=NaN;
-                eta(j,i,k)=NaN;
-            else
-                %il motore funziona
-                funzionamentomotore=true;               
+            else                         
                 %l'ugello non è strozzato quindi è adattato
                 adattato(j,i,k)=1;
                 Pu=P5*pressratio;
@@ -107,50 +94,38 @@ for k=1:nM
                 Mu=RHOu*Au*Vu;
                 Ma=Mu/(1+f);
             end
-            
-            % se il rapporto di pressioni ci sono comunque casi in cui il
-            % motore potrebbe non funzionare che matematicamente sono
-            % comunque accettabili quindi li escludo dal calcolo
-
-            if funzionamentomotore
-                if Vu <= V(k) || f<=0
-                    funzionamentomotore = false;
-                    S(j,i,k)=NaN;
-                    I(j,i,k)=NaN;
-                    TSFC(j,i,k)=NaN;
-                    etaTH(j,i,k)=NaN;
-                    etaP(j,i,k)=NaN;
-                    eta(j,i,k)=NaN;
-                end
-            end
-            
-            if ~funzionamentomotore
-                adattato(j,i,k)=-1;
-            end
-
+                   
             %risultati finali
             %utilizzo le formule generali in modo che anche con ugelli non
-            %adattati i risultati siano coerenti
+            %adattati i risultati siano coerenti            
+                
+            %calcolo la potenza del getto con la formula generale, con
+            %effetto della propulsione ed effetto della velocità
+
+            PJ = 0.5*Ma*((1+f)*Vu^2 - V0(k)^2)+ (Pu-Pa)*Au*Vu;
+
+            %faccio la stessa cosa per la spinta e poi trovo la spinta
+            %specifica e il TSFC
+
+            S(j,i,k)=Ma*((1+f)*Vu-V0(k))+(Pu-Pa)*Au;
+            I(j,i,k)=S(j,i,k)/Ma;
+            TSFC(j,i,k)=f*Ma/S(j,i,k)*3600;
             
-            if(funzionamentomotore)
-                
-                %calcolo la potenza del getto con la formula generale, con
-                %effetto della propulsione ed effetto della velocità
+            %calcolo dei rendimenti
 
-                Pj = 0.5*Ma*((1+f)*Vu^2 - V(k)^2)+ (Pu-Pa)*Au*Vu;
-                
-                %faccio la stessa cosa per la spinta e poi trovo la spinta
-                %specifica e il TSFC
+            etaP(j,i,k)=(S(j,i,k)*V0(k))/PJ;
+            etaTH(j,i,k)=PJ/(Ma*f*Qf);
+            eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
 
-                S(j,i,k)=Ma*((1+f)*Vu-V(k))+(Pu-Pa)*Au;
-                I(j,i,k)=S(j,i,k)/Ma;
-                TSFC(j,i,k)=f*Ma/S(j,i,k)*3600;
-                
-                %calcolo dei rendimenti
+            %correzioni per situazioni fisicamente impossibili
 
-                etaP(j,i,k)=(S(j,i,k)*V(k))/Pj;
-                etaTH(j,i,k)=Pj/(Ma*f*Qf);
-                eta(j,i,k)=etaTH(j,i,k)*etaP(j,i,k);
+            if Vu <= V0(k) || f<=0 || imag(Vu)~=0 || pressratio >= 1
+                S(j,i,k)=NaN;
+                I(j,i,k)=NaN;
+                TSFC(j,i,k)=NaN;
+                etaTH(j,i,k)=NaN;
+                etaP(j,i,k)=NaN;
+                eta(j,i,k)=NaN;
             end
         end
     end
@@ -163,38 +138,32 @@ for p=1:nM
     figure(p)
 
     subplot(3, 2, 1)
+    plot(beta, S(:,:,p)); hold on;
+    title(sprintf('Spinta (M=%.1f)', M(p)))
+    legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
+
+    subplot(3, 2, 2)
     plot(beta, I(:,:,p)); hold on;
     title(sprintf('Spinta specifica (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, 2)
+    subplot(3, 2, 3)
     plot(beta, TSFC(:,:,p)); hold on;
     title(sprintf('TSFC (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, 3)
+    subplot(3, 2, 4)
     plot(beta, etaTH(:,:,p)); hold on;
     title(sprintf('\x03B7_T_H (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, 4)
+    subplot(3, 2, 5)
     plot(beta, etaP(:,:,p)); hold on;
     title(sprintf('\x03B7_P (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
 
-    subplot(3, 2, 5)
+    subplot(3, 2, 6)
     plot(beta, eta(:,:,p)); hold on;
     title(sprintf('\x03B7 (M=%.1f)', M(p)))
     legend('T4=1200 K', 'T4=1400 K', 'T4=1600 K');
-
-    subplot(3, 2, 6)
-    imagesc(beta, T4, adattato(:,:,p)); hold on;
-    colormap([[0 0 0];[186/255 32/255 11/255];[0 125/255 17/255]]);
-    clim([-1 1]);
-    set(colorbar, 'Ticks', [-0.65 0 0.65] ,'TickLabels', {sprintf('motore non funzionante'), 'NO', 'SI'} );
-    set(gca, 'Ydir', 'normal', 'YTick',[1200 1400 1600]);
-    ylabel('T4', 'Rotation',0);
-    plot(beta, repmat(1500, nbeta, 1), 'k'); hold on;
-    plot(beta, repmat(1300, nbeta, 1), 'k'); 
-    title(sprintf('l''ugello è adattato? (M=%.1f)', M(p)) );
 end
