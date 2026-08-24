@@ -75,7 +75,7 @@ for j=1:nT
         %controllo se ci sono risultati immaginari, in questo caso il motore
         %non produce spinta infatti il rapporto di pressioni Pa/P05 è maggiore
         %di 1
-        if(imag(Vu)~=0)
+        if(imag(Vu)=0)
             S(j,i)=0;
             I(j,i)=0;
             TSFC(j,i)=inf;
