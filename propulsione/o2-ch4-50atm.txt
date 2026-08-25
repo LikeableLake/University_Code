@@ -1,0 +1,1650 @@
+
+ *******************************************************************************
+
+         NASA-GLENN CHEMICAL EQUILIBRIUM PROGRAM CEA2, FEBRUARY 5, 2004
+                   BY  BONNIE MCBRIDE AND SANFORD GORDON
+      REFS: NASA RP-1311, PART I, 1994 AND NASA RP-1311, PART II, 1996
+
+ *******************************************************************************
+
+
+
+  
+ ### CEA analysis performed on Mon 24-Aug-2026 17:36:36
+  
+ # Problem Type: "Assigned Enthalpy and Pressure"
+  
+ prob case = _______________2377 hp
+  
+ # Pressure (1 value):
+ p,atm= 50
+  
+ # Oxidizer/Fuel Wt. ratio (30 values):
+ o/f = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  22, 23, 24, 25, 26, 27, 28, 29, 30
+  
+ # You selected the following fuels and oxidizers:
+ reac
+ fuel CH4               wt%=100.0000  t,k= 300.000
+ oxid O2                wt%=100.0000  t,k= 300.000
+  
+ # You selected these options for output:
+ # short version of output
+ output short
+ # Proportions of any products will be expressed as Mass Fractions.
+ output massf
+ # Heat will be expressed as siunits
+ output siunits
+  
+ # Input prepared by this script:/var/www/sites/cearun/cgi-bin/CEARUN/prepareInpu
+ tFile.cgi
+  
+ ### IMPORTANT:  The following line is the end of your CEA input file!
+ end
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    1.00000  %FUEL= 50.000000  R,EQ.RATIO= 3.989263  PHI,EQ.RATIO= 3.989263
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1306.40
+ RHO, KG/CU M    5.9321 0
+ H, KJ/KG        -2322.17
+ U, KJ/KG        -3176.21
+ G, KJ/KG        -21595.5
+ S, KJ/(KG)(K)    14.7530
+
+ M, (1/n)          12.718
+ (dLV/dLP)t      -1.10843
+ (dLV/dLT)p        2.1657
+ Cp, KJ/(KG)(K)   11.3472
+ GAMMAs            1.1930
+ SON VEL,M/SEC     1009.4
+
+ MASS FRACTIONS
+
+ CH4              0.11922
+ *CO              0.61660
+ *CO2             0.07548
+ C2H4             0.00004
+ C2H6             0.00006
+ *H2              0.08397
+ HCHO,formaldehy  0.00001
+ H2O              0.10462
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    2.00000  %FUEL= 33.333333  R,EQ.RATIO= 1.994632  PHI,EQ.RATIO= 1.994632
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2741.89
+ RHO, KG/CU M    3.5526 0
+ H, KJ/KG        -1547.55
+ U, KJ/KG        -2973.60
+ G, KJ/KG        -40511.4
+ S, KJ/(KG)(K)    14.2106
+
+ M, (1/n)          15.986
+ (dLV/dLP)t      -1.00177
+ (dLV/dLT)p        1.0370
+ Cp, KJ/(KG)(K)    3.1258
+ GAMMAs            1.2153
+ SON VEL,M/SEC     1316.5
+
+ MASS FRACTIONS
+
+ *CO              0.51977
+ *CO2             0.09773
+ *H               0.00036
+ HCO              0.00002
+ *H2              0.04587
+ H2O              0.33480
+ *O               0.00001
+ *OH              0.00142
+ *O2              0.00001
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    3.00000  %FUEL= 25.000000  R,EQ.RATIO= 1.329754  PHI,EQ.RATIO= 1.329754
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3516.19
+ RHO, KG/CU M    3.4870 0
+ H, KJ/KG        -1160.24
+ U, KJ/KG        -2613.14
+ G, KJ/KG        -46467.3
+ S, KJ/(KG)(K)    12.8853
+
+ M, (1/n)          20.122
+ (dLV/dLP)t      -1.03264
+ (dLV/dLT)p        1.5822
+ Cp, KJ/(KG)(K)    6.7635
+ GAMMAs            1.1367
+ SON VEL,M/SEC     1285.1
+
+ MASS FRACTIONS
+
+ *CO              0.30623
+ *CO2             0.20461
+ COOH             0.00002
+ *H               0.00155
+ HCO              0.00002
+ HO2              0.00009
+ *H2              0.01292
+ H2O              0.40777
+ H2O2             0.00002
+ *O               0.00561
+ *OH              0.04593
+ *O2              0.01522
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    4.00000  %FUEL= 20.000000  R,EQ.RATIO= 0.997316  PHI,EQ.RATIO= 0.997316
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3580.71
+ RHO, KG/CU M    3.8520 0
+ H, KJ/KG         -927.85
+ U, KJ/KG        -2243.06
+ G, KJ/KG        -43518.7
+ S, KJ/(KG)(K)    11.8945
+
+ M, (1/n)          22.637
+ (dLV/dLP)t      -1.04976
+ (dLV/dLT)p        1.8799
+ Cp, KJ/(KG)(K)    7.9801
+ GAMMAs            1.1273
+ SON VEL,M/SEC     1217.6
+
+ MASS FRACTIONS
+
+ *CO              0.17674
+ *CO2             0.27092
+ COOH             0.00002
+ *H               0.00104
+ HCO              0.00001
+ HO2              0.00038
+ *H2              0.00488
+ H2O              0.35722
+ H2O2             0.00005
+ *O               0.01583
+ *OH              0.07358
+ *O2              0.09933
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    5.00000  %FUEL= 16.666667  R,EQ.RATIO= 0.797853  PHI,EQ.RATIO= 0.797853
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3513.30
+ RHO, KG/CU M    4.2268 0
+ H, KJ/KG         -772.92
+ U, KJ/KG        -1971.52
+ G, KJ/KG        -40048.8
+ S, KJ/(KG)(K)    11.1792
+
+ M, (1/n)          24.371
+ (dLV/dLP)t      -1.04263
+ (dLV/dLT)p        1.7752
+ Cp, KJ/(KG)(K)    6.9205
+ GAMMAs            1.1271
+ SON VEL,M/SEC     1162.3
+
+ MASS FRACTIONS
+
+ *CO              0.10723
+ *CO2             0.28872
+ COOH             0.00002
+ *H               0.00061
+ HO2              0.00056
+ *H2              0.00243
+ H2O              0.30872
+ H2O2             0.00005
+ *O               0.01839
+ *OH              0.07230
+ *O2              0.20098
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    6.00000  %FUEL= 14.285714  R,EQ.RATIO= 0.664877  PHI,EQ.RATIO= 0.664877
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3421.12
+ RHO, KG/CU M    4.5722 0
+ H, KJ/KG         -662.26
+ U, KJ/KG        -1770.33
+ G, KJ/KG        -37074.6
+ S, KJ/(KG)(K)    10.6434
+
+ M, (1/n)          25.671
+ (dLV/dLP)t      -1.03324
+ (dLV/dLT)p        1.6258
+ Cp, KJ/(KG)(K)    5.8093
+ GAMMAs            1.1288
+ SON VEL,M/SEC     1118.4
+
+ MASS FRACTIONS
+
+ *CO              0.06705
+ *CO2             0.28655
+ COOH             0.00001
+ *H               0.00036
+ HO2              0.00062
+ *H2              0.00137
+ H2O              0.27160
+ H2O2             0.00005
+ *O               0.01703
+ *OH              0.06346
+ *O2              0.29190
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    7.00000  %FUEL= 12.500000  R,EQ.RATIO= 0.569895  PHI,EQ.RATIO= 0.569895
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3322.63
+ RHO, KG/CU M    4.8919 0
+ H, KJ/KG         -579.27
+ U, KJ/KG        -1614.90
+ G, KJ/KG        -34559.0
+ S, KJ/(KG)(K)    10.2268
+
+ M, (1/n)          26.676
+ (dLV/dLP)t      -1.02512
+ (dLV/dLT)p        1.4907
+ Cp, KJ/(KG)(K)    4.8867
+ GAMMAs            1.1320
+ SON VEL,M/SEC     1082.7
+
+ MASS FRACTIONS
+
+ *CO              0.04251
+ *CO2             0.27612
+ COOH             0.00001
+ *H               0.00021
+ HO2              0.00061
+ *H2              0.00082
+ H2O              0.24300
+ H2O2             0.00005
+ *O               0.01437
+ *OH              0.05340
+ *O2              0.36889
+ O3               0.00001
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    8.00000  %FUEL= 11.111111  R,EQ.RATIO= 0.498658  PHI,EQ.RATIO= 0.498658
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3222.52
+ RHO, KG/CU M    5.1931 0
+ H, KJ/KG         -514.72
+ U, KJ/KG        -1490.29
+ G, KJ/KG        -32394.2
+ S, KJ/(KG)(K)     9.8927
+
+ M, (1/n)          27.465
+ (dLV/dLP)t      -1.01866
+ (dLV/dLT)p        1.3783
+ Cp, KJ/(KG)(K)    4.1470
+ GAMMAs            1.1364
+ SON VEL,M/SEC     1052.9
+
+ MASS FRACTIONS
+
+ *CO              0.02705
+ *CO2             0.26230
+ *H               0.00013
+ HO2              0.00057
+ *H2              0.00051
+ H2O              0.22038
+ H2O2             0.00004
+ *O               0.01150
+ *OH              0.04395
+ *O2              0.43355
+ O3               0.00001
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=    9.00000  %FUEL= 10.000000  R,EQ.RATIO= 0.443251  PHI,EQ.RATIO= 0.443251
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3122.39
+ RHO, KG/CU M    5.4818 0
+ H, KJ/KG         -463.08
+ U, KJ/KG        -1387.28
+ G, KJ/KG        -30494.1
+ S, KJ/(KG)(K)     9.6180
+
+ M, (1/n)          28.090
+ (dLV/dLP)t      -1.01367
+ (dLV/dLT)p        1.2881
+ Cp, KJ/(KG)(K)    3.5586
+ GAMMAs            1.1420
+ SON VEL,M/SEC     1027.3
+
+ MASS FRACTIONS
+
+ *CO              0.01717
+ *CO2             0.24735
+ *H               0.00008
+ HO2              0.00051
+ *H2              0.00032
+ H2O              0.20201
+ H2O2             0.00004
+ *O               0.00887
+ *OH              0.03561
+ *O2              0.48803
+ O3               0.00001
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   10.00000  %FUEL=  9.090909  R,EQ.RATIO= 0.398926  PHI,EQ.RATIO= 0.398926
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             3022.98
+ RHO, KG/CU M    5.7627 0
+ H, KJ/KG         -420.82
+ U, KJ/KG        -1299.96
+ G, KJ/KG        -28798.3
+ S, KJ/(KG)(K)     9.3873
+
+ M, (1/n)          28.590
+ (dLV/dLP)t      -1.00991
+ (dLV/dLT)p        1.2172
+ Cp, KJ/(KG)(K)    3.0919
+ GAMMAs            1.1487
+ SON VEL,M/SEC     1004.9
+
+ MASS FRACTIONS
+
+ *CO              0.01082
+ *CO2             0.23238
+ *H               0.00005
+ HO2              0.00044
+ *H2              0.00021
+ H2O              0.18671
+ H2O2             0.00003
+ *O               0.00665
+ *OH              0.02849
+ *O2              0.53421
+ O3               0.00001
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   11.00000  %FUEL=  8.333333  R,EQ.RATIO= 0.362660  PHI,EQ.RATIO= 0.362660
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2924.84
+ RHO, KG/CU M    6.0396 0
+ H, KJ/KG         -385.61
+ U, KJ/KG        -1224.45
+ G, KJ/KG        -27265.3
+ S, KJ/(KG)(K)     9.1902
+
+ M, (1/n)          28.991
+ (dLV/dLP)t      -1.00711
+ (dLV/dLT)p        1.1623
+ Cp, KJ/(KG)(K)    2.7225
+ GAMMAs            1.1563
+ SON VEL,M/SEC      984.9
+
+ MASS FRACTIONS
+
+ *CO              0.00676
+ *CO2             0.21799
+ *H               0.00003
+ HO2              0.00038
+ *H2              0.00013
+ H2O              0.17371
+ H2O2             0.00003
+ *O               0.00486
+ *OH              0.02252
+ *O2              0.57360
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   12.00000  %FUEL=  7.692308  R,EQ.RATIO= 0.332439  PHI,EQ.RATIO= 0.332439
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2828.51
+ RHO, KG/CU M    6.3149 0
+ H, KJ/KG         -355.82
+ U, KJ/KG        -1158.08
+ G, KJ/KG        -25866.8
+ S, KJ/(KG)(K)     9.0192
+
+ M, (1/n)          29.314
+ (dLV/dLP)t      -1.00506
+ (dLV/dLT)p        1.1204
+ Cp, KJ/(KG)(K)    2.4309
+ GAMMAs            1.1647
+ SON VEL,M/SEC      966.6
+
+ MASS FRACTIONS
+
+ *CO              0.00418
+ *CO2             0.20446
+ *H               0.00002
+ HO2              0.00032
+ *H2              0.00008
+ H2O              0.16246
+ H2O2             0.00002
+ *O               0.00347
+ *OH              0.01762
+ *O2              0.60738
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   13.00000  %FUEL=  7.142857  R,EQ.RATIO= 0.306866  PHI,EQ.RATIO= 0.306866
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2734.54
+ RHO, KG/CU M    6.5904 0
+ H, KJ/KG         -330.28
+ U, KJ/KG        -1099.01
+ G, KJ/KG        -24583.4
+ S, KJ/(KG)(K)     8.8692
+
+ M, (1/n)          29.576
+ (dLV/dLP)t      -1.00358
+ (dLV/dLT)p        1.0888
+ Cp, KJ/(KG)(K)    2.2011
+ GAMMAs            1.1735
+ SON VEL,M/SEC      949.8
+
+ MASS FRACTIONS
+
+ *CO              0.00256
+ *CO2             0.19193
+ *H               0.00001
+ HO2              0.00026
+ *H2              0.00005
+ H2O              0.15257
+ H2O2             0.00002
+ *O               0.00243
+ *OH              0.01364
+ *O2              0.63652
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   14.00000  %FUEL=  6.666667  R,EQ.RATIO= 0.284947  PHI,EQ.RATIO= 0.284947
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2643.47
+ RHO, KG/CU M    6.8669 0
+ H, KJ/KG         -308.15
+ U, KJ/KG        -1045.93
+ G, KJ/KG        -23401.4
+ S, KJ/(KG)(K)     8.7360
+
+ M, (1/n)          29.791
+ (dLV/dLP)t      -1.00253
+ (dLV/dLT)p        1.0652
+ Cp, KJ/(KG)(K)    2.0202
+ GAMMAs            1.1824
+ SON VEL,M/SEC      934.0
+
+ MASS FRACTIONS
+
+ *CO              0.00155
+ *CO2             0.18045
+ HO2              0.00021
+ *H2              0.00003
+ H2O              0.14378
+ H2O2             0.00001
+ *O               0.00167
+ *OH              0.01047
+ *O2              0.66180
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   15.00000  %FUEL=  6.250000  R,EQ.RATIO= 0.265951  PHI,EQ.RATIO= 0.265951
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2555.78
+ RHO, KG/CU M    7.1447 0
+ H, KJ/KG         -288.78
+ U, KJ/KG         -997.88
+ G, KJ/KG        -22311.0
+ S, KJ/(KG)(K)     8.6167
+
+ M, (1/n)          29.968
+ (dLV/dLP)t      -1.00178
+ (dLV/dLT)p        1.0478
+ Cp, KJ/(KG)(K)    1.8778
+ GAMMAs            1.1911
+ SON VEL,M/SEC      919.0
+
+ MASS FRACTIONS
+
+ *CO              0.00093
+ *CO2             0.16999
+ HO2              0.00017
+ *H2              0.00002
+ H2O              0.13588
+ H2O2             0.00001
+ *O               0.00114
+ *OH              0.00798
+ *O2              0.68386
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   16.00000  %FUEL=  5.882353  R,EQ.RATIO= 0.249329  PHI,EQ.RATIO= 0.249329
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2471.83
+ RHO, KG/CU M    7.4237 0
+ H, KJ/KG         -271.70
+ U, KJ/KG         -954.14
+ G, KJ/KG        -21304.2
+ S, KJ/(KG)(K)     8.5089
+
+ M, (1/n)          30.116
+ (dLV/dLP)t      -1.00125
+ (dLV/dLT)p        1.0351
+ Cp, KJ/(KG)(K)    1.7654
+ GAMMAs            1.1995
+ SON VEL,M/SEC      904.7
+
+ MASS FRACTIONS
+
+ *CO              0.00056
+ *CO2             0.16049
+ HO2              0.00014
+ *H2              0.00001
+ H2O              0.12874
+ H2O2             0.00001
+ *O               0.00076
+ *OH              0.00605
+ *O2              0.70323
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   17.00000  %FUEL=  5.555556  R,EQ.RATIO= 0.234663  PHI,EQ.RATIO= 0.234663
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2391.88
+ RHO, KG/CU M    7.7036 0
+ H, KJ/KG         -256.51
+ U, KJ/KG         -914.15
+ G, KJ/KG        -20374.2
+ S, KJ/(KG)(K)     8.4108
+
+ M, (1/n)          30.240
+ (dLV/dLP)t      -1.00088
+ (dLV/dLT)p        1.0257
+ Cp, KJ/(KG)(K)    1.6763
+ GAMMAs            1.2073
+ SON VEL,M/SEC      891.0
+
+ MASS FRACTIONS
+
+ *CO              0.00033
+ *CO2             0.15188
+ HO2              0.00011
+ *H2              0.00001
+ H2O              0.12224
+ H2O2             0.00001
+ *O               0.00051
+ *OH              0.00457
+ *O2              0.72034
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   18.00000  %FUEL=  5.263158  R,EQ.RATIO= 0.221626  PHI,EQ.RATIO= 0.221626
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2316.05
+ RHO, KG/CU M    7.9839 0
+ H, KJ/KG         -242.92
+ U, KJ/KG         -877.48
+ G, KJ/KG        -19515.0
+ S, KJ/(KG)(K)     8.3211
+
+ M, (1/n)          30.347
+ (dLV/dLP)t      -1.00063
+ (dLV/dLT)p        1.0189
+ Cp, KJ/(KG)(K)    1.6053
+ GAMMAs            1.2144
+ SON VEL,M/SEC      877.9
+
+ MASS FRACTIONS
+
+ *CO              0.00020
+ *CO2             0.14407
+ HO2              0.00009
+ H2O              0.11631
+ H2O2             0.00001
+ *O               0.00034
+ *OH              0.00343
+ *O2              0.73554
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   19.00000  %FUEL=  5.000000  R,EQ.RATIO= 0.209961  PHI,EQ.RATIO= 0.209961
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2244.34
+ RHO, KG/CU M    8.2640 0
+ H, KJ/KG         -230.69
+ U, KJ/KG         -843.74
+ G, KJ/KG        -18720.7
+ S, KJ/(KG)(K)     8.2385
+
+ M, (1/n)          30.439
+ (dLV/dLP)t      -1.00045
+ (dLV/dLT)p        1.0140
+ Cp, KJ/(KG)(K)    1.5482
+ GAMMAs            1.2209
+ SON VEL,M/SEC      865.2
+
+ MASS FRACTIONS
+
+ *CO              0.00012
+ *CO2             0.13698
+ HO2              0.00007
+ H2O              0.11088
+ *O               0.00022
+ *OH              0.00258
+ *O2              0.74914
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   20.00000  %FUEL=  4.761905  R,EQ.RATIO= 0.199463  PHI,EQ.RATIO= 0.199463
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2176.69
+ RHO, KG/CU M    8.5435 0
+ H, KJ/KG         -219.62
+ U, KJ/KG         -812.62
+ G, KJ/KG        -17986.0
+ S, KJ/(KG)(K)     8.1621
+
+ M, (1/n)          30.520
+ (dLV/dLP)t      -1.00032
+ (dLV/dLT)p        1.0104
+ Cp, KJ/(KG)(K)    1.5018
+ GAMMAs            1.2268
+ SON VEL,M/SEC      852.9
+
+ MASS FRACTIONS
+
+ *CO              0.00007
+ *CO2             0.13052
+ HO2              0.00006
+ H2O              0.10589
+ *O               0.00015
+ *OH              0.00194
+ *O2              0.76137
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   21.00000  %FUEL=  4.545455  R,EQ.RATIO= 0.189965  PHI,EQ.RATIO= 0.189965
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2112.94
+ RHO, KG/CU M    8.8219 0
+ H, KJ/KG         -209.56
+ U, KJ/KG         -783.85
+ G, KJ/KG        -17305.7
+ S, KJ/(KG)(K)     8.0912
+
+ M, (1/n)          30.591
+ (dLV/dLP)t      -1.00023
+ (dLV/dLT)p        1.0077
+ Cp, KJ/(KG)(K)    1.4636
+ GAMMAs            1.2321
+ SON VEL,M/SEC      841.2
+
+ MASS FRACTIONS
+
+ *CO              0.00004
+ *CO2             0.12463
+ HO2              0.00004
+ H2O              0.10129
+ *O               0.00010
+ *OH              0.00145
+ *O2              0.77244
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   22.00000  %FUEL=  4.347826  R,EQ.RATIO= 0.181330  PHI,EQ.RATIO= 0.181330
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             2052.91
+ RHO, KG/CU M    9.0988 0
+ H, KJ/KG         -200.38
+ U, KJ/KG         -757.18
+ G, KJ/KG        -16675.0
+ S, KJ/(KG)(K)     8.0250
+
+ M, (1/n)          30.655
+ (dLV/dLP)t      -1.00017
+ (dLV/dLT)p        1.0058
+ Cp, KJ/(KG)(K)    1.4320
+ GAMMAs            1.2368
+ SON VEL,M/SEC      829.8
+
+ MASS FRACTIONS
+
+ *CO              0.00002
+ *CO2             0.11924
+ HO2              0.00003
+ H2O              0.09705
+ *O               0.00006
+ *OH              0.00109
+ *O2              0.78249
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   23.00000  %FUEL=  4.166667  R,EQ.RATIO= 0.173446  PHI,EQ.RATIO= 0.173446
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1996.40
+ RHO, KG/CU M    9.3739 0
+ H, KJ/KG         -191.96
+ U, KJ/KG         -732.42
+ G, KJ/KG        -16089.5
+ S, KJ/(KG)(K)     7.9631
+
+ M, (1/n)          30.713
+ (dLV/dLP)t      -1.00012
+ (dLV/dLT)p        1.0043
+ Cp, KJ/(KG)(K)    1.4053
+ GAMMAs            1.2410
+ SON VEL,M/SEC      819.0
+
+ MASS FRACTIONS
+
+ *CO              0.00002
+ *CO2             0.11428
+ HO2              0.00003
+ H2O              0.09313
+ *O               0.00004
+ *OH              0.00082
+ *O2              0.79168
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   24.00000  %FUEL=  4.000000  R,EQ.RATIO= 0.166219  PHI,EQ.RATIO= 0.166219
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1943.18
+ RHO, KG/CU M    9.6470 0
+ H, KJ/KG         -184.21
+ U, KJ/KG         -709.37
+ G, KJ/KG        -15545.1
+ S, KJ/(KG)(K)     7.9050
+
+ M, (1/n)          30.765
+ (dLV/dLP)t      -1.00009
+ (dLV/dLT)p        1.0033
+ Cp, KJ/(KG)(K)    1.3827
+ GAMMAs            1.2448
+ SON VEL,M/SEC      808.5
+
+ MASS FRACTIONS
+
+ *CO              0.00001
+ *CO2             0.10972
+ HO2              0.00002
+ H2O              0.08950
+ *O               0.00003
+ *OH              0.00062
+ *O2              0.80010
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   25.00000  %FUEL=  3.846154  R,EQ.RATIO= 0.159571  PHI,EQ.RATIO= 0.159571
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1893.04
+ RHO, KG/CU M    9.9179 0
+ H, KJ/KG         -177.06
+ U, KJ/KG         -687.88
+ G, KJ/KG        -15038.1
+ S, KJ/(KG)(K)     7.8504
+
+ M, (1/n)          30.813
+ (dLV/dLP)t      -1.00007
+ (dLV/dLT)p        1.0025
+ Cp, KJ/(KG)(K)    1.3632
+ GAMMAs            1.2482
+ SON VEL,M/SEC      798.5
+
+ MASS FRACTIONS
+
+ *CO              0.00001
+ *CO2             0.10550
+ HO2              0.00002
+ H2O              0.08613
+ *O               0.00002
+ *OH              0.00047
+ *O2              0.80786
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   26.00000  %FUEL=  3.703704  R,EQ.RATIO= 0.153433  PHI,EQ.RATIO= 0.153433
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1845.75
+ RHO, KG/CU M    1.0186 1
+ H, KJ/KG         -170.44
+ U, KJ/KG         -667.79
+ G, KJ/KG        -14565.0
+ S, KJ/(KG)(K)     7.7988
+
+ M, (1/n)          30.857
+ (dLV/dLP)t      -1.00005
+ (dLV/dLT)p        1.0019
+ Cp, KJ/(KG)(K)    1.3462
+ GAMMAs            1.2514
+ SON VEL,M/SEC      788.9
+
+ MASS FRACTIONS
+
+ *CO2             0.10160
+ HO2              0.00001
+ H2O              0.08299
+ *O               0.00001
+ *OH              0.00035
+ *O2              0.81503
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   27.00000  %FUEL=  3.571429  R,EQ.RATIO= 0.147750  PHI,EQ.RATIO= 0.147750
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1801.12
+ RHO, KG/CU M    1.0453 1
+ H, KJ/KG         -164.29
+ U, KJ/KG         -648.98
+ G, KJ/KG        -14122.9
+ S, KJ/(KG)(K)     7.7500
+
+ M, (1/n)          30.897
+ (dLV/dLP)t      -1.00004
+ (dLV/dLT)p        1.0014
+ Cp, KJ/(KG)(K)    1.3313
+ GAMMAs            1.2542
+ SON VEL,M/SEC      779.7
+
+ MASS FRACTIONS
+
+ *CO2             0.09797
+ HO2              0.00001
+ H2O              0.08007
+ *O               0.00001
+ *OH              0.00027
+ *O2              0.82167
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   28.00000  %FUEL=  3.448276  R,EQ.RATIO= 0.142474  PHI,EQ.RATIO= 0.142474
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1758.95
+ RHO, KG/CU M    1.0716 1
+ H, KJ/KG         -158.57
+ U, KJ/KG         -631.33
+ G, KJ/KG        -13709.0
+ S, KJ/(KG)(K)     7.7037
+
+ M, (1/n)          30.935
+ (dLV/dLP)t      -1.00003
+ (dLV/dLT)p        1.0011
+ Cp, KJ/(KG)(K)    1.3181
+ GAMMAs            1.2568
+ SON VEL,M/SEC      770.8
+
+ MASS FRACTIONS
+
+ *CO2             0.09460
+ HO2              0.00001
+ H2O              0.07734
+ *O               0.00001
+ *OH              0.00020
+ *O2              0.82785
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   29.00000  %FUEL=  3.333333  R,EQ.RATIO= 0.137561  PHI,EQ.RATIO= 0.137561
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1719.07
+ RHO, KG/CU M    1.0977 1
+ H, KJ/KG         -153.23
+ U, KJ/KG         -614.75
+ G, KJ/KG        -13320.8
+ S, KJ/(KG)(K)     7.6597
+
+ M, (1/n)          30.970
+ (dLV/dLP)t      -1.00002
+ (dLV/dLT)p        1.0009
+ Cp, KJ/(KG)(K)    1.3062
+ GAMMAs            1.2592
+ SON VEL,M/SEC      762.3
+
+ MASS FRACTIONS
+
+ *CO2             0.09144
+ HO2              0.00001
+ H2O              0.07478
+ *OH              0.00016
+ *O2              0.83361
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
+
+
+
+
+
+
+         THERMODYNAMIC EQUILIBRIUM COMBUSTION PROPERTIES AT ASSIGNED
+
+                                   PRESSURES
+
+ CASE = _______________
+
+             REACTANT                    WT FRACTION      ENERGY      TEMP
+                                          (SEE NOTE)     KJ/KG-MOL      K  
+ FUEL        CH4                          1.0000000    -74533.907    300.000
+ OXIDANT     O2                           1.0000000        54.358    300.000
+
+ O/F=   30.00000  %FUEL=  3.225806  R,EQ.RATIO= 0.132975  PHI,EQ.RATIO= 0.132975
+
+ THERMODYNAMIC PROPERTIES
+
+ P, BAR            50.663
+ T, K             1681.29
+ RHO, KG/CU M    1.1236 1
+ H, KJ/KG         -148.23
+ U, KJ/KG         -599.13
+ G, KJ/KG        -12956.2
+ S, KJ/(KG)(K)     7.6179
+
+ M, (1/n)          31.002
+ (dLV/dLP)t      -1.00002
+ (dLV/dLT)p        1.0007
+ Cp, KJ/(KG)(K)    1.2955
+ GAMMAs            1.2615
+ SON VEL,M/SEC      754.2
+
+ MASS FRACTIONS
+
+ *CO2             0.08849
+ HO2              0.00001
+ H2O              0.07238
+ *OH              0.00012
+ *O2              0.83899
+
+  * THERMODYNAMIC PROPERTIES FITTED TO 20000.K
+
+ NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF OXIDANT IN TOTAL OXIDANTS
+
+
+
