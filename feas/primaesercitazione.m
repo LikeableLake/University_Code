@@ -74,13 +74,13 @@ pattern(d, f, 'type', 'efield');
 
 figure(3)
 subplot(1,2,1); dir=pattern(d,f,0,(-180:1:180), 'Type','efield');
-polarplot(dir);
+polarplot(dir); title('direttività piano xz')
 
 %al posto di patternElevation posso usare pattern e fissare l'azimuth al
 %variare dell'elevation
 
 subplot(1,2,2); az=pattern(d,f,(-180:1:180), 90, 'type','efield');
-polarplot(az');
+polarplot(az*1e9); title('direttività piano xy (moltiplicata per 10^9)')
 
 %qui fisso l'elevation (a 90 poichè serve l'angolo theta) e faccio variare 
 %%l'azimuth
