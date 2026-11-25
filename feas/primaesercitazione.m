@@ -83,4 +83,42 @@ subplot(1,2,2); az=pattern(d,f,(-180:1:180), 90, 'type','efield');
 polarplot(az*1e9); title('direttività piano xy (moltiplicata per 10^9)')
 
 %qui fisso l'elevation (a 90 poichè serve l'angolo theta) e faccio variare 
-%%l'azimuth
+%l'azimuth
+
+%%
+%cerco di calcolare la corrente nell'antenna
+
+%            sin[k(l-|z|)]                |z|
+%  I(z)=I0 * -------------   = I0 * [ 1 - --- ]
+%               sin(kl)                    l
+
+% il rapporto I(z) / I0 va a 1 per z=0 e va a 0 per z= l; -l
+
+%uso la funzione current per trovare la distribuzione di corrente sul
+%dipolo
+
+figure (4)
+current(d,f);
+
+%attenzione, visto che l'antenna non è cilinrica ma piatta e il dominio è
+%diviso in mesh triangolare si vede che la corrente è storta
+
+%il mesh deve essere di circa lambda/30 o /40 ma il mesh di matlab è
+%solitamente più lasco
+
+meshconfig(d, 'manual');
+
+%fisso una meshatura manuale
+
+figure(5)
+mesh(d, MaxEdgeLength=lambda/40);
+
+%attenzione è molto lungo da simulare
+
+figure (5)
+current(d,f);
+
+%mentre la corrente ha una forte dipendenza dal mesh la direttività no
+%poichè essa dipende dalla corrente in integrale (l'integrale media gli
+%errori) 
+
