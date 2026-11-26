@@ -85,7 +85,6 @@ polarplot(az*1e9); title('direttività piano xy (moltiplicata per 10^9)')
 %qui fisso l'elevation (a 90 poichè serve l'angolo theta) e faccio variare 
 %l'azimuth
 
-%%
 %cerco di calcolare la corrente nell'antenna
 
 %            sin[k(l-|z|)]                |z|
@@ -122,3 +121,52 @@ current(d,f);
 %poichè essa dipende dalla corrente in integrale (l'integrale media gli
 %errori) 
 
+%%
+
+% analisi in frequenza del dipolo
+
+c=3*10^8;       %velocita della luce 
+
+f=300e6;        %frequenza a metà più o meno
+f1=30e6;
+f2=600e6;
+
+numfreq=100;
+
+lambda = c/f;
+
+freq = linspace(f1, f2, numfreq);
+
+d=dipole(Width=lambda/100, Length=lambda/2);
+
+meshconfig(d,'manual');
+mesh(d, MaxEdgeLength=lambda/40)
+
+Z =impedance(d, freq);
+
+
+plot(freq/1e6, real(Z), 'c-', freq/1e6, imag(Z), '-s');
+
+%per come il codice è strutturato lambda =c/f corrisponde alla metà quindi
+%il dipolo si comporta come antenna a lambda mezzi a f quindi a 300 MHz
+%mentre si comporta come antenna corta o lunga negli altri casi
+
+%return loss
+
+Z0=50; %può anche essere 75, è l'impedenza caratteristica della struttura guidante
+Z0=75;
+returnLoss = 20*log10(abs((Z-Z0)./(Z+Z0)));
+
+plot(freq/1e6, returnLoss, 'c-', freq/1e6, -10, '-s');
+
+%coefficiente di riflessione serve per valutare un'antenna, quando in
+%decibel è 0 l'antenna riflette tutto ciò che la alimenta e non emette
+%niente, quando l'antenna è lunga lambda/2 molta parte della potenza
+%incidente viene irradiata
+
+%valore tipico è -10 dB, posso controllare per quali valori di z e quindi f
+%l'antenna si mantiene sotto i -10
+
+
+%ampiezza di fascio ha la formula beamwidht(d, f, phi, theta) con phi e
+%theta che sono gli angoli di azimuth ed elevation
